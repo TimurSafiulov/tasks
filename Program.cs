@@ -28,28 +28,28 @@ public class ParallelUtils<T, TR>
         {
             StartEvaluation();
         }
-        Result = _task.Result; // This will block the calling thread until the task is complete.
+        Result = _task.Result; 
     }
 }
 
-// Приклад використання
+
 class Program
 {
     static void Main()
     {
-        // Приклад функції, яка додає два числа
+        
         Func<int, int, int> addFunction = (x, y) => x + y;
 
-        // Створення об'єкта ParallelUtils
+        
         var parallelUtils = new ParallelUtils<int, int>(addFunction, 3, 4);
 
-        // Запуск обчислення у паралельному потоці
+      
         parallelUtils.StartEvaluation();
 
-        // Очікування завершення обчислення і отримання результату
+        
         parallelUtils.Evaluate();
 
-        // Вивід результату
-        Console.WriteLine(parallelUtils.Result); // Виведе 7
+       
+        Console.WriteLine(parallelUtils.Result);
     }
 }
